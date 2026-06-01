@@ -21,7 +21,14 @@ const BAD_BODY_KEYWORDS = [
   "error 503",
   "site is down",
   "temporarily unavailable",
+  "403 forbidden",
+  "host not in allowlist",
+  "you have been blocked",
+  "unable to access",
+  "attention required",
 ];
+
+const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function loadSites() {
@@ -47,7 +54,7 @@ function checkSite(site) {
 
     const req = lib.get(
       site.url,
-      { timeout: 10000, headers: { "User-Agent": "SiteMonitor/1.0" } },
+      { timeout: 10000, headers: { "User-Agent": USER_AGENT } },
       (res) => {
         const elapsed = Date.now() - start;
         let body = "";
