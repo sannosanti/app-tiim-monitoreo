@@ -2,7 +2,6 @@ const https = require("https");
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const nodemailer = require("nodemailer");
 const cron = require("node-cron");
 
 const SITES_FILE = path.join(__dirname, "sites.json");
@@ -11,10 +10,7 @@ const LOG_FILE = path.join(__dirname, "log.json");
 // ─── Config desde variables de entorno ───────────────────────────────────────
 const EMAIL_FROM = process.env.EMAIL_FROM;
 const EMAIL_TO = process.env.EMAIL_TO;
-const SMTP_HOST = process.env.SMTP_HOST;
-const SMTP_PORT = parseInt(process.env.SMTP_PORT || "465");
-const SMTP_USER = process.env.SMTP_USER;
-const SMTP_PASS = process.env.SMTP_PASS;
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CHECK_CRON = process.env.CHECK_CRON || "0 8 * * *"; // Diario 8am
 const PORT = process.env.PORT || 3000;
 
@@ -123,8 +119,8 @@ async function checkAll() {
 
 // ─── Email ────────────────────────────────────────────────────────────────────
 async function sendReport(results) {
-  if (!SMTP_HOST || !EMAIL_TO) {
-    console.log("SMTP no configurado, omitiendo email.");
+  if (!RESEND_API_KEY || !EMAIL_TO) {
+    console.log("Resend no configurado, omitiendo email.");
     return;
   }
 
@@ -207,25 +203,30 @@ async function sendReport(results) {
   </body>
   </html>`;
 
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: SMTP_PORT,
-    secure: SMTP_PORT === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-  });
-
   const downNames = down.map((r) => r.name).join(", ");
   const subject =
     down.length > 0
       ? `🔴 ${down.length} sitio(s) caído(s): ${downNames}`
       : `✅ Todos los sitios en línea — Reporte diario`;
 
-  await transporter.sendMail({
-    from: `"Site Monitor" <${EMAIL_FROM}>`,
-    to: EMAIL_TO,
-    subject,
-    html,
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: EMAIL_FROM || "Site Monitor <monitor@resend.dev>",
+      to: [EMAIL_TO],
+      subject,
+      html,
+    }),
   });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Resend error ${res.status}: ${err}`);
+  }
 
   console.log(`Email enviado a ${EMAIL_TO}`);
 }
