@@ -217,7 +217,7 @@ async function sendReport(results) {
     },
     body: JSON.stringify({
       from: EMAIL_FROM || "Site Monitor <monitor@resend.dev>",
-      to: [EMAIL_TO],
+      to: EMAIL_TO.split(",").map((e) => e.trim()),
       subject,
       html,
     }),
