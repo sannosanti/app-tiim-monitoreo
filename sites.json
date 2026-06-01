@@ -1,7 +1,7 @@
 [
   { "name": "TIIM", "url": "https://tiim.com.co" },
   { "name": "Santiwebmaster", "url": "https://santiwebmaster.com" },
-  { "name": "Agrofertas", "url": "https://agroofertas.com" },
+  { "name": "Agrofertas Proveedores", "url": "https://agroofertas.com" },
   { "name": "Juanchoads", "url": "https://juanchoads.com" },
   { "name": "TIIM Agencia Digital", "url": "https://tiimagenciadigital.com" },
   { "name": "TIIM Digital", "url": "https://tiimdigital.com" },
@@ -13,5 +13,6 @@
   { "name": "Eternal", "url": "https://www.eternal.com.co" },
   { "name": "Neurohacking Center", "url": "https://neurohackingcenter.co" },
   { "name": "APR Ingenieros", "url": "https://apringenieros.com" },
-  { "name": "Webtav", "url": "https://www.webtav.es" }
+  { "name": "Webtav", "url": "https://www.webtav.es" },
+  { "name": "Agrofertas Marketplace", "url": "https://agrofertas.co" }
 ]
