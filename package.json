@@ -1,0 +1,16 @@
+{
+  "name": "site-monitor",
+  "version": "1.0.0",
+  "description": "Monitor de sitios web con alertas por email",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.9"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

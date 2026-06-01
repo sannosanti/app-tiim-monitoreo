@@ -1,0 +1,7 @@
+[
+  { "name": "Agrofertas",        "url": "https://agrofertas.co" },
+  { "name": "Panel Admin",       "url": "https://admin.agrofertas.co" },
+  { "name": "API REST",          "url": "https://api.agrofertas.co" },
+  { "name": "Landing Mascotas",  "url": "https://mascotas.agrofertas.co" },
+  { "name": "Staging",           "url": "https://staging.agrofertas.co" }
+]
