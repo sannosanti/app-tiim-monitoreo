@@ -1,7 +1,17 @@
 [
-  { "name": "Agrofertas",        "url": "https://agrofertas.co" },
-  { "name": "Panel Admin",       "url": "https://admin.agrofertas.co" },
-  { "name": "API REST",          "url": "https://api.agrofertas.co" },
-  { "name": "Landing Mascotas",  "url": "https://mascotas.agrofertas.co" },
-  { "name": "Staging",           "url": "https://staging.agrofertas.co" }
+  { "name": "TIIM", "url": "https://tiim.com.co" },
+  { "name": "Santiwebmaster", "url": "https://santiwebmaster.com" },
+  { "name": "Agrofertas", "url": "https://agroofertas.com" },
+  { "name": "Juanchoads", "url": "https://juanchoads.com" },
+  { "name": "TIIM Agencia Digital", "url": "https://tiimagenciadigital.com" },
+  { "name": "TIIM Digital", "url": "https://tiimdigital.com" },
+  { "name": "TIIM Digital Agency", "url": "https://tiimdigitalagency.com" },
+  { "name": "TE-M", "url": "https://te-m.co" },
+  { "name": "Tu Serenata Virtual", "url": "https://tuserenatavirtual.com" },
+  { "name": "Luksus Tienda", "url": "https://luksustienda.co" },
+  { "name": "Saldos Ahuevo", "url": "https://www.saldosahuevo.com" },
+  { "name": "Eternal", "url": "https://www.eternal.com.co" },
+  { "name": "Neurohacking Center", "url": "https://neurohackingcenter.co" },
+  { "name": "APR Ingenieros", "url": "https://apringenieros.com" },
+  { "name": "Webtav", "url": "https://www.webtav.es" }
 ]
