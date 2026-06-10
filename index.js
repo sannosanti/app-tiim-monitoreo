@@ -54,7 +54,7 @@ function checkSite(site) {
 
     const req = lib.get(
       site.url,
-      { timeout: 10000, headers: { "User-Agent": USER_AGENT } },
+      { timeout: 10000, headers: { "User-Agent": USER_AGENT, "Accept-Encoding": "identity" } },
       (res) => {
         const elapsed = Date.now() - start;
         let body = "";
